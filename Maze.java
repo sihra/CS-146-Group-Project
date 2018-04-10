@@ -13,13 +13,16 @@ import java.util.Stack;
  * @since 04/02/2018
  */
 public class Maze {
-    private Cells[][] grid;
+    private Cells[][] grid; // 2d array which is the maze
     private ArrayList<Cells> neighborList;
     private int value;
     private int X;
     private int Y;
     private int DIM = 4;
 
+
+    //a constructor
+    // when new a Maze it will generate a 2d array(grid) with cells and sets the position of each cell
     public Maze() {
         this.grid = new Cells[DIM][DIM];
         initializeCells();
@@ -31,6 +34,8 @@ public class Maze {
         return grid;
     }
 
+
+    //generate a grid with cells objects
     public void initializeCells() {
         for (int i = 0; i < DIM; i++) {
             for (int j = 0; j < DIM; j++) {
@@ -39,6 +44,10 @@ public class Maze {
         }
     }
 
+
+    // this method is use to set where to start and where to exit
+    //starts at position(0,0) in the grid
+    //ends at position(3,3) in the grid
     public void setStartEnd() {
         grid[0][0].setNorth(false);
         grid[3][3].setSouth(false);
@@ -48,6 +57,10 @@ public class Maze {
 //        grid[2][1].setNorth(false);
     }
 
+
+
+
+    // generates a maze
     public void generateMaze() {
 //        create a CellStack (LIFO) to hold a list of cell locations
 //        set TotalCells= number of cells in grid
@@ -64,6 +77,15 @@ public class Maze {
 //                       4). add 1 to VisitedCells
 //              else
 //              pop the most recent cell entry off the CellStack make it CurrentCell
+
+
+
+
+
+
+        //this part is pretty much the algorithm from the project requirements
+        //algorithm is above.
+
         Random random = new Random();
 
         X = random.nextInt(grid.length);
@@ -85,7 +107,7 @@ public class Maze {
                 Cells tempCell = neighborCellList.get(r1);
                 removeWalls(CurrentCell, tempCell);
                 cellsStack.push(CurrentCell);
-                System.out.print("(" + CurrentCell.getX() + "," + CurrentCell.getY() + ")" + " ");
+                //System.out.print("(" + CurrentCell.getX() + "," + CurrentCell.getY() + ")" + " ");
                 CurrentCell = tempCell;
                 VisitedCells++;
             } else {
@@ -94,6 +116,16 @@ public class Maze {
 
         }
 
+
+        // this part is a part to
+        printMaze();
+
+
+    }
+
+
+    // a function to print the maze
+    public void printMaze() {
         System.out.println();
         setStartEnd();
         for (int i = 0; i < DIM; i++) {
@@ -124,9 +156,9 @@ public class Maze {
         }
         System.out.print("+   +");
 
-
     }
 
+    //set each cell with it respective x and y position in the grid.
     public void setCellsCordinates(Cells[][] a) {
         for (int i = 0; i < DIM; i++) {
             for (int j = 0; j < DIM; j++) {
@@ -137,6 +169,7 @@ public class Maze {
     }
 
 
+    // a method to find all the neighbor cells with all walls intact
     public ArrayList<Cells> findNeighborCells(Cells a) {
 
         neighborList = new ArrayList<>();
@@ -167,6 +200,7 @@ public class Maze {
         return neighborList;
     }
 
+    // remove the wall between current cell and its selected neighbor
     public void removeWalls(Cells current, Cells neighbor) {
 
         // neighbor is the top neighbor cell of the current

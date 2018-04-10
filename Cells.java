@@ -13,9 +13,9 @@ import java.util.ArrayList;
  * @since 04/02/2018
  */
 public class Cells {
-    private Boolean north, south, west, east;
-    private int x;
-    private int y;
+    private Boolean north, south, west, east;// walls
+    private int x; // (rows) a variable to track which position is currently at in the grid
+    private int y; // (columns)a variable to track which position is currently at in the grid
 
     public int getX() {
         return x;
@@ -71,7 +71,7 @@ public class Cells {
     public Boolean getEast() {
         return east;
     }
-
+    // a method to check if each cell has all walls intact
     public boolean checkWalls() {
         if (north == true && west == true && east == true && south == true) {
             return true;
