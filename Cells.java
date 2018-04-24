@@ -1,5 +1,7 @@
 package sjsu.yang.cs146.project2;
 
+import javafx.scene.control.Cell;
+
 import java.util.ArrayList;
 
 /**
@@ -16,6 +18,85 @@ public class Cells {
     private Boolean north, south, west, east;// walls
     private int x; // (rows) a variable to track which position is currently at in the grid
     private int y; // (columns)a variable to track which position is currently at in the grid
+    private CellColor color; // enum variable holding the color/visibility of each cell
+    private int bfsValue = -1; // The counter for Breadth First Search
+    private int dfsValue = -1; // the counter for Depth First Search
+    Cells parent;
+    Boolean hasPathChild;
+    /**
+     * Constructor for Cells declaring "walls" on the north, south, west, and east sides
+     */
+    public Cells() {
+        north = true;
+        south = true;
+        west = true;
+        east = true;
+    }
+
+    /**
+     * Method that returns the Depth First Search count number
+     * @return DFS count value
+     */
+    public int dfs() {
+        return this.dfsValue;
+    }
+
+
+    public Cells getParent() {
+        return parent;
+    }
+
+    public void setParent(Cells parent) {
+        this.parent = parent;
+    }
+
+    public Boolean getHasPathChild() {
+        return hasPathChild;
+    }
+
+    public void setHasPathChild(Boolean hasPathChild) {
+        this.hasPathChild = hasPathChild;
+    }
+
+    /**
+     * Setter method that sets the cell's DFS count number
+     * @param count - DFS count value
+     */
+    public void setDFS(int count) {
+        dfsValue = count;
+    }
+
+    /**
+     * Method that returns the Breadth First Search count number
+     * @return BFS count value
+     */
+    public int bfs() {
+        return this.bfsValue;
+    }
+
+    /**
+     * Setter method that sets the cell's BFS count number
+     * @param count - BFS count value
+     */
+    public void setBFS(int count) {
+        bfsValue = count;
+    }
+
+    /**
+     * Setter method that set's the cell's visibility/color
+     * @param enumColor - color to be set to
+     */
+    public void setColor(CellColor enumColor) {
+        color = enumColor;
+    }
+
+    /**
+     * Getter method that return's the cell's color/visibility
+     * @return CellColor enum
+     */
+    public CellColor getColor() {
+        return color;
+    }
 
     public int getX() {
         return x;
@@ -47,13 +128,6 @@ public class Cells {
 
     public void setSouth(Boolean south) {
         this.south = south;
-    }
-
-    public Cells() {
-        north = true;
-        south = true;
-        west = true;
-        east = true;
     }
 
     public Boolean getNorth() {

@@ -23,11 +23,20 @@ public class Maze {
 
     //a constructor
     // when new a Maze it will generate a 2d array(grid) with cells and sets the position of each cell
-    public Maze() {
+    public Maze(int dimension) {
+        DIM = dimension;
         this.grid = new Cells[DIM][DIM];
         initializeCells();
         setCellsCordinates(grid);
         generateMaze();
+    }
+
+    /**
+     * Getter method for Maze's dimensions
+     * @return Maze dimension
+     */
+    public int getDIM() {
+        return DIM;
     }
 
     public Cells[][] getGrid() {
@@ -131,7 +140,7 @@ public class Maze {
         for (int i = 0; i < DIM; i++) {
             for (int j = 0; j < DIM; j++) {
                 if (grid[i][j].getNorth() == true) {
-                    System.out.print("+---");
+                    System.out.print("+ - ");
 
                 } else
                     System.out.print("+   ");
@@ -149,7 +158,7 @@ public class Maze {
         }
         for (int j = 0; j < DIM - 1; j++) {
             if (grid[3][j].getSouth() == true) {
-                System.out.print("+---");
+                System.out.print("+ - ");
             } else
                 System.out.print("+   ");
 
