@@ -32,6 +32,10 @@ public class DepthFirstSearch {
         solveTheDSFPath();
         printDFSPath();
     }
+    public Cells[][] getSolvedDFS(){
+
+        return this.mazeGrid;
+    }
 
     /**
      * Method that sets all the cells color/visibility to white

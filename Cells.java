@@ -21,8 +21,8 @@ public class Cells {
     private CellColor color; // enum variable holding the color/visibility of each cell
     private int bfsValue = -1; // The counter for Breadth First Search
     private int dfsValue = -1; // the counter for Depth First Search
-    Cells parent;
-    Boolean hasPathChild;
+    Cells parent; // Parent of the cell
+    Boolean hasPathChild; // Checks if there is a child
     /**
      * Constructor for Cells declaring "walls" on the north, south, west, and east sides
      */
@@ -42,18 +42,34 @@ public class Cells {
     }
 
 
+    /**
+     * Getter method for the cell's parent
+     * @return parent of the cell
+     */
     public Cells getParent() {
         return parent;
     }
 
+    /**
+     * Setter method for the cell's parent
+     * @param parent - parent of the cell
+     */
     public void setParent(Cells parent) {
         this.parent = parent;
     }
 
+    /**
+     * Checks to see if the path has a child
+     * @return true if there is a child, false if not
+     */
     public Boolean getHasPathChild() {
         return hasPathChild;
     }
 
+    /**
+     * Setter method for the child of the path
+     * @param hasPathChild - child to be set
+     */
     public void setHasPathChild(Boolean hasPathChild) {
         this.hasPathChild = hasPathChild;
     }
@@ -98,54 +114,106 @@ public class Cells {
         return color;
     }
 
+    /**
+     * Getter method for the cell's position in the maze
+     * @return - row in the maze
+     */
     public int getX() {
         return x;
     }
 
+    /**
+     * Setter method for the cell's position in the maze
+     * @param x - index of row
+     */
     public void setX(int x) {
         this.x = x;
     }
 
+    /**
+     * Getter method for the cell's position in the maze
+     * @return - column in the maze
+     */
     public int getY() {
         return y;
     }
 
+    /**
+     * Setter method for the cell's position in the maze
+     * @param x - index of column
+     */
     public void setY(int y) {
         this.y = y;
     }
 
+    /**
+     * Method that gives or takes away a west wall to the cell
+     * @param west- if true, then gives a wall, if false, then takes away a wall
+     */
     public void setWest(Boolean west) {
         this.west = west;
     }
 
+    /**
+     * Method that gives or takes away a east wall to the cell
+     * @param west- if true, then gives a wall, if false, then takes away a wall
+     */
     public void setEast(Boolean east) {
         this.east = east;
     }
 
+    /**
+     * Method that gives or takes away a north wall to the cell
+     * @param west- if true, then gives a wall, if false, then takes away a wall
+     */
     public void setNorth(Boolean north) {
         this.north = north;
     }
 
+    /**
+     * Method that gives or takes away a south wall to the cell
+     * @param west- if true, then gives a wall, if false, then takes away a wall
+     */
     public void setSouth(Boolean south) {
         this.south = south;
     }
 
+    /**
+     * Method that tells users if there is a north wall
+     * @return - true if there is a wall, false if there is not a wall
+     */
     public Boolean getNorth() {
         return north;
     }
 
+    /**
+     * Method that tells users if there is a south wall
+     * @return - true if there is a wall, false if there is not a wall
+     */
     public Boolean getSouth() {
         return south;
     }
 
+    /**
+     * Method that tells users if there is a west wall
+     * @return - true if there is a wall, false if there is not a wall
+     */
     public Boolean getWest() {
         return west;
     }
 
+    /**
+     * Method that tells users if there is a east wall
+     * @return - true if there is a wall, false if there is not a wall
+     */
     public Boolean getEast() {
         return east;
     }
-    // a method to check if each cell has all walls intact
+
+    /**
+     * Method that checks if a cell has all walls intact
+     * @return true if a cell has all walls, false if the cell does not
+     */
     public boolean checkWalls() {
         if (north == true && west == true && east == true && south == true) {
             return true;

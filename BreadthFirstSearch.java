@@ -43,8 +43,10 @@ public class BreadthFirstSearch {
     /**
      * Method that implements the BFS algorithm on the maze
      *
-     * @param startRow - starting row of the cell
-     * @param startCol - starting column of the cell
+     * @param startRow
+     *            - starting row of the cell
+     * @param startCol
+     *            - starting column of the cell
      */
     private void bfsSolution(int startRow, int startCol) {
 
@@ -93,7 +95,8 @@ public class BreadthFirstSearch {
      * north side of the current cell by checking if they're white and there's no
      * wall between the two cells
      *
-     * @param c - current cell
+     * @param c
+     *            - current cell
      * @return list of valid neighbor cells
      */
     private ArrayList<Cells> validNeighbors(Cells c) {
@@ -130,7 +133,8 @@ public class BreadthFirstSearch {
     /**
      * Method that places a cell in the LinkedList queue and monitors the root
      *
-     * @param c - Cell to be queued
+     * @param c
+     *            - Cell to be queued
      */
     private void enqueue(Cells c) {
         Node node = new Node(c);
@@ -170,7 +174,8 @@ public class BreadthFirstSearch {
     /**
      * Method that keeps track of the BFS counter for each cell
      *
-     * @param c- cell to be assigned a BFS value
+     * @param c-
+     *            cell to be assigned a BFS value
      */
     private void counter(Cells c) {
 
@@ -181,6 +186,14 @@ public class BreadthFirstSearch {
             bfsCounter++;
             c.setBFS(bfsCounter);
         }
+    }
+
+    /**
+     * Getter method for the maze solved with BFS
+     * @return solved maze
+     */
+    public Cells[][] getSolvedBFS(){
+        return mazeGrid;
     }
 
     /**
@@ -227,6 +240,9 @@ public class BreadthFirstSearch {
         System.out.print("+   +");
     }
 
+    /**
+     * Method that finds the shortest path for BFS
+     */
     public void solveTheBSFPath() {
         mazeGrid[0][0].setHasPathChild(true);
         Cells end = mazeGrid[DIM - 1][DIM - 1];
@@ -237,9 +253,11 @@ public class BreadthFirstSearch {
             current = current.getParent();
         }
 
-
     }
 
+    /**
+     * Method that prints out the shortest BFS path
+     */
     public void printBFSPath() {
         System.out.println();
         System.out.println();
@@ -278,7 +296,6 @@ public class BreadthFirstSearch {
         System.out.print("+   +");
     }
 
-
     /**
      * Node class that keeps track of the cells in the maze
      *
@@ -291,7 +308,8 @@ public class BreadthFirstSearch {
         /**
          * Node constructor that takes in a Cell object
          *
-         * @param data - Cell object
+         * @param data
+         *            - Cell object
          */
         public Node(Cells data) {
             this.data = data;
@@ -318,7 +336,8 @@ public class BreadthFirstSearch {
         /**
          * Method that sets the root for the Node
          *
-         * @param n - node to be set to root
+         * @param n
+         *            - node to be set to root
          */
         public void root(Node n) {
             root = n;
